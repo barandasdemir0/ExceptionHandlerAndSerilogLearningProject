@@ -1,20 +1,24 @@
+using ExceptionHandlerAndSerilog.WebAPI;
 using ExceptionHandlerAndSerilog.WebAPI.Services;
 using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
+
 builder.Services.AddTransient<UserService>();
-
+builder.AddServiceDefaults();
 builder.Services.AddOpenApi();
-
+builder.Services.AddExceptionHandler<ExceptionHandler>().AddProblemDetails();//bununla exceptionları yakala  ve addproblemdetails ile hataları daha da detaylı işle //dependency injection için
 
 var app = builder.Build();
+app.MapDefaultEndpoints();
+
 
 if (app.Environment.IsDevelopment())
 {
     app.MapOpenApi();
     app.MapScalarApiReference();
 }
-
+app.UseExceptionHandler();//her api isteğinde instance ve hata olursa bunu çalıştır
 app.MapGet("/", (int age,UserService user) =>
 {
     //if (age < 18)

@@ -1,0 +1,5 @@
+{
+  "appHost": {
+    "path": "ExceptionHandlerAndSerilog.WebAPI.AppHost/ExceptionHandlerAndSerilog.WebAPI.AppHost.csproj"
+  }
+}
