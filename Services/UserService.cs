@@ -4,9 +4,9 @@ public sealed class UserService
 {
     public (bool, string) Create(int age)
     {
-        int a = age;
-        int b = 0;
-        int c = a / b;
+        //int a = age;
+        //int b = 0;
+        //int c = a / b;
         if (age < 18)
         {
 
